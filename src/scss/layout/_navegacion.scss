@@ -1,0 +1,46 @@
+
+.barra{
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+
+    @include tablet{
+        img{
+            max-width: 100%;
+            width: 28rem;
+            height: auto;
+
+        }
+        flex-direction: row;
+        justify-content: space-between;
+    }   
+}   
+
+.navegacion{
+    @include tablet{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    a{
+        color:$blanco;
+        text-decoration: none;
+        font-size: 2.2rem;
+        display: block;
+        text-align: center;
+
+        &:hover{
+            color: $verde;
+        }
+        
+
+        @include tablet{
+            margin-right:2rem;
+
+            &last-of-type{
+                margin-right: 0;
+            }
+        }
+
+    }
+}
