@@ -1,17 +1,15 @@
-.iconos-nosotros{
-    @include tablet{
-        @include grid(3, 2rem);
-    }
-    
+@include tablet {
+  .iconos-nosotros {
+    @include grid(3, 2rem);
+  }
 }
-.icono{
-    img{
-        text-align: center;
-        height: 10rem;
-    }
+.icono {
+  text-align: center;
+  img {
+    height: 10rem;
+  }
 
-    h3{
-        text-transform: uppercase;
-    }
+  h3 {
+    text-transform: uppercase;
+  }
 }
-

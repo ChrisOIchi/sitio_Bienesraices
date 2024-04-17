@@ -1,26 +1,68 @@
 
+.derecha{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet{
+        align-items: flex-end;
+    }
+    .dark-mode-boton{
+        width: 3rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        filter: invert(100%);
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        @include tablet{
+            margin-top: 0;
+        }
+    }
+}
+
+
+
 .barra{
     display: flex;
     flex-direction: column;
     padding-top: 3rem;
-
+    align-items: center;
+    
     @include tablet{
-        img{
-            max-width: 100%;
-            width: 28rem;
-            height: auto;
-
-        }
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-end;
+        
+        img{
+            margin-top: 2rem;
+            width: 30rem;
+            height: auto;
+        }
+
     }   
+    img{
+        margin-top: 2rem;
+        width: 30rem;
+        height: auto;
+    }
 }   
 
 .navegacion{
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: visibility 0.3s ease-in-out, opacity 0.5s linear, height 0.5s linear;
+
+
     @include tablet{
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 1;
+        visibility: visible;
     }
     a{
         color:$blanco;
@@ -43,4 +85,24 @@
         }
 
     }
+}
+
+
+/**Menu de hamburguesa**/
+
+.mobile-menu{
+    @include tablet{
+        display: none;
+    }
+
+    img{
+        width: 5rem;
+    }
+}
+
+
+.mostrar{
+    visibility: visible;
+    opacity: 1;
+    height: auto;
 }
