@@ -4,7 +4,7 @@ incluirTemplate('header');
 ?>
 
 <main class="contenedor seccion">
-  <h1>Contacto</h1>~
+  <h1>Contacto</h1>
   <picture>
     <source srcset="build/img/destacada3.webp" type="image/webp">
     <source srcset="build/img/destacada3.jpg" type="image/jpeg">
@@ -47,10 +47,10 @@ incluirTemplate('header');
       <p>Como desea ser contactado:</p>
       <div class="forma-contacto">
         <label for="contactar-telefono">Teléfono</label>
-        <input type="radio" name="contacto" id="contactar-telefono" value="telefono">
+        <input type="radio" name="contacto" id="contactar-telefono" value="telefono" checked>
 
         <label for="contactar-email">E-mail</label>
-        <input type="radio" name="contacto" id="contactar-email" value="email" checked>
+        <input type="radio" name="contacto" id="contactar-email" value="email" >
       </div>
 
       <p>Si eligió teléfono, elija la fecha y la hora:</p>
