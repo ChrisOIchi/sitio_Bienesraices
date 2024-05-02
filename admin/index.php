@@ -1,11 +1,19 @@
 <?php
 
+require '../includes/funciones.php';
+
+$auth = estaAutenticado();
+if (!$auth) {
+    header('Location: /');
+}
+
+
 
 //importar la conexion
 require '../includes/config/database.php';
 $db = conectarDB();
 //escribir query
-$query="SELECT * FROM propiedades";
+$query = "SELECT * FROM propiedades";
 
 //Consultar BD
 $resultadoConsulta = mysqli_query($db, $query);
@@ -39,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 //incluye el header
-require '../includes/funciones.php';
 incluirTemplate('header');
 
 ?>
@@ -47,11 +54,11 @@ incluirTemplate('header');
     <h1>Administrador de Bienes Raices</h1>
 
     <?php if (intval($mensaje) === 1) : ?>
-    <p class="alerta exito">Creado Correctamente</p>
+        <p class="alerta exito">Creado Correctamente</p>
     <?php elseif (intval($mensaje) === 2) : ?>
-    <p class="alerta exito">Actualizado Correctamente</p>
+        <p class="alerta exito">Actualizado Correctamente</p>
     <?php elseif (intval($mensaje) === 3) : ?>
-    <p class="alerta exito">Eliminado Correctamente</p>
+        <p class="alerta exito">Eliminado Correctamente</p>
     <?php endif; ?>
 
     <a href="/admin/propiedades/crear.php" class="boton boton-verde"> Nueva Propiedad</a>
@@ -69,20 +76,20 @@ incluirTemplate('header');
 
         <tbody>
             <!-- Aqui se van a mostrar los datos de la BD -->
-            <?php while($propiedad = mysqli_fetch_assoc($resultadoConsulta)): ?>
-            <tr>
-                <td><?php echo $propiedad['id']; ?></td>
-                <td><?php echo $propiedad['titulo']; ?></td>
-                <td><img src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="" class="imagen-tabla"></td>
-                <td>$ <?php echo $propiedad['precio']; ?></td>
-                <td>
-                    <form method="POST" class="w-100">
-                        <input type="hidden" name="id" value="<?php echo $propiedad['id']; ?>">
-                        <input type="submit" class="boton-rojo-block" value="Eliminar"></a>
-                    </form>
-                    <a href="admin/propiedades/actualizar.php?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo-block">Actualizar</a>
-                </td>
-            </tr>
+            <?php while ($propiedad = mysqli_fetch_assoc($resultadoConsulta)) : ?>
+                <tr>
+                    <td><?php echo $propiedad['id']; ?></td>
+                    <td><?php echo $propiedad['titulo']; ?></td>
+                    <td><img src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="" class="imagen-tabla"></td>
+                    <td>$ <?php echo $propiedad['precio']; ?></td>
+                    <td>
+                        <form method="POST" class="w-100">
+                            <input type="hidden" name="id" value="<?php echo $propiedad['id']; ?>">
+                            <input type="submit" class="boton-rojo-block" value="Eliminar"></a>
+                        </form>
+                        <a href="admin/propiedades/actualizar.php?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo-block">Actualizar</a>
+                    </td>
+                </tr>
             <?php endwhile; ?>
         </tbody>
     </table>

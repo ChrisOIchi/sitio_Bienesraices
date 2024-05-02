@@ -14,6 +14,10 @@ if (!$propiedad) {
   header('Location: /');
 }
 
+if ($resultado->num_rows === 0) {
+  header('Location: /');
+}
+
 
 require 'includes/funciones.php';
 incluirTemplate('header');
